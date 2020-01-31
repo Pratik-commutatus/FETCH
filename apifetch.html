@@ -1,0 +1,29 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <div id='output'></div>
+
+
+    <script>
+
+
+const fetchPromise = fetch("https://swapi.co/api/people/");
+
+fetchPromise.then(response => {
+  return response.json();
+}).then(people => {
+  document.getElementById('output').innerHTML = listOfNames(people);
+});
+function listOfNames(people) {
+  const names = people.results.map(person => `<li>${person.name}</li>`).join("\n");
+  return `<ul>${names}</ul>`
+}
+    </script>
+</body>
+
+</html>
